@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="Enchere_AP4.Views.MagasinMapView"
+             Title="Carte des Magasins"
+             >
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <Frame BackgroundColor="{StaticResource Secondary}" CornerRadius="0" HorizontalOptions="Fill" HeightRequest="50" Padding="10,5,10,5">
+                <Grid ColumnSpacing="5">
+                    
+                    <Button x:Name="btn_5km" Grid.Column="0" Text="5 km" CornerRadius="15" HorizontalOptions="Start" Clicked="btn_5km_Clicked"/>
+                    <Button x:Name="btn_10km" Grid.Column="1" Text="10 km" CornerRadius="15" HorizontalOptions="Start" Clicked="btn_10km_Clicked"/>
+                    <Button x:Name="btn_50km" Grid.Column="2" Text="50 km" CornerRadius="15" HorizontalOptions="Start" Clicked="btn_50km_Clicked"/>
+                    
+                </Grid>
+            </Frame>
+            <maps:Map x:Name="mapTest" MinimumHeightRequest="200" MinimumWidthRequest="200" HasZoomEnabled="True" HasScrollEnabled="True" 
+                          HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                          ItemsSource="{Binding LesPinsMagasins}" IsShowingUser="True" >
+
+                <maps:Map.ItemTemplate>
+                    <DataTemplate >
+
+                        <maps:Pin Position="{Binding Position}" Type="Place"
+                                      Label="{Binding Label}" Address="{Binding Address}"
+                                      MarkerClicked="Pin_MarkerClicked"
+                                      
+                                      />
+
+                    </DataTemplate>
+                </maps:Map.ItemTemplate>
+            </maps:Map>
+        </StackLayout>
+            
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Enchere_AP4.Views.ListeEnchere"
+             Title="{Binding Title}"
+             
+             >
+    <ContentPage.Content >
+        <StackLayout Margin="10" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btn_Aucun" Grid.Column="0" Text="Aucun" CornerRadius="20" HeightRequest="40" BorderColor="White" BorderWidth="2" 
+                        BackgroundColor="{StaticResource Key=Primary}" TextColor="White" FontSize="10"  
+                        Command="{Binding AucunCommand}" Clicked="btn_Aucun_Clicked"
+                        />
+                <Button x:Name="btn_Classique" Grid.Column="1" Text="Classique" CornerRadius="20" HeightRequest="40" BorderColor="{StaticResource Key=Primary}" BorderWidth="2" 
+                        BackgroundColor="White" TextColor="{StaticResource Key=Primary}" FontSize="10"  
+                        Command="{Binding ClassiqueCommand}" Clicked="btn_Classique_Clicked"
+                        />
+                <Button x:Name="btn_Inverse" Grid.Column="2" Text="Inversé" CornerRadius="20" HeightRequest="40" BorderColor="{StaticResource Key=Primary}" BorderWidth="2" 
+                        BackgroundColor="White" TextColor="{StaticResource Key=Primary}" FontSize="10"  
+                        Command="{Binding InverseCommand}" Clicked="btn_Inverse_Clicked"
+                        />
+                <Button x:Name="btn_Flash" Grid.Column="3" Text="Flash" CornerRadius="20" HeightRequest="40" BorderColor="{StaticResource Key=Primary}" BorderWidth="2" 
+                        BackgroundColor="White" TextColor="{StaticResource Key=Primary}" FontSize="10"  
+                        Command="{Binding FlashCommand}" Clicked="btn_Flash_Clicked"
+                        />
+
+
+            </Grid>
+            <CollectionView ItemsSource="{Binding LesEncheres}" SelectedItem="{Binding SelectedEnchere}"  SelectionChangedCommand="{Binding PageEnchereInfo}" 
+                            SelectionMode="Single" 
+                            >
+                
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate >
+                    <DataTemplate>
+                        
+                        <Grid RowSpacing="10" >
+                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+
+                            <Frame CornerRadius="15" HasShadow="True" BorderColor="LightGray"  Grid.Row="1">
+                                <StackLayout>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <Grid Padding="10"  ColumnSpacing="15" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="60"/>
+                                            <ColumnDefinition Width="auto"/>
+                                            
+                                        </Grid.ColumnDefinitions>
+                                        
+
+                                        <Image Source="{Binding LeProduit.Photo}" Grid.Column="0" 
+                                           Aspect="AspectFill" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start"/>
+                                        
+                                        <Label TextColor="Black"  Grid.Column="1" 
+                                               FontAttributes="Bold,Italic" TextDecorations="Underline"
+                                               FontSize="15"
+                                               >
+                                            <Label.Text>
+                                                <MultiBinding StringFormat="{}Du :{0:d} au {1:d}" >
+                                                    <Binding Path="DateDebut" />
+                                                    <Binding Path="DateFin" />
+                                                </MultiBinding>
+                                            </Label.Text>
+                                        </Label>
+                                        
+                                        <Label Text="{Binding LeProduit.Nom}" Padding="0,20,0,0" Grid.Column="1" 
+                                           TextColor="Black" FontAttributes="Bold" 
+                                           HorizontalOptions="Start" VerticalOptions="Center" />
+                                        
+                                        
+                                    </Grid>
+
+                                </StackLayout>
+
+                            </Frame>
+
+                        </Grid>
+                        
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

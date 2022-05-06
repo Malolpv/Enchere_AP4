@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Enchere_AP4.Views.Accueil"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" 
+             Title="Accueil"
+             BackgroundColor="#1C375C"
+             >
+    
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Label Text="{Binding LeUser.Prenom,StringFormat='Bonjour {0} !'}" TextColor="White" FontSize="40" HorizontalTextAlignment="Center" Margin="0,20,0,20" />
+        <Frame CornerRadius="30" Padding="0,0,0,0" HorizontalOptions="Center" BorderColor="Black">
+            <Image Source="profil.png" Aspect="AspectFill" />
+        </Frame>
+        
+        <Frame Grid.Row="1" Margin="0,0,0,-40" BorderColor="#1C375C" HasShadow="True"  CornerRadius="50" HeightRequest="700">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="20" Padding="20,50,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"  Text="Bienvenue aux enchères SIO!" FontSize="24" FontAttributes="Bold" TextColor="{StaticResource Primary}" Margin="0,-20,0,0"  HorizontalTextAlignment="Center"></Label>
+                
+                
+
+            </Grid>
+        </Frame>
+    </StackLayout>
+</ContentPage>

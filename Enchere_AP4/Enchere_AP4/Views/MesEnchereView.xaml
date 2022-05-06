@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Enchere_AP4.Views.MesEnchereView"
+             Title="Mes Enchères Participées"
+             >
+    
+    
+    <ContentPage.Content>
+        <StackLayout>
+
+
+            <CollectionView ItemsSource="{Binding LesEncheres}" 
+                            SelectionMode="Single" 
+                            >
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate >
+                    <DataTemplate>
+
+                        <Grid RowSpacing="10" >
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+
+                            <Frame CornerRadius="15" HasShadow="True" BorderColor="LightGray"  Grid.Row="1" >
+                                <StackLayout>
+
+
+
+
+
+                                    <Grid Padding="10"  ColumnSpacing="15" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="60"/>
+                                            <ColumnDefinition Width="auto"/>
+
+                                        </Grid.ColumnDefinitions>
+
+
+                                        <Image Source="{Binding LeProduit.Photo}" Grid.Column="0" 
+                                           Aspect="AspectFill" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start"/>
+
+                                        <Label TextColor="Black"  Grid.Column="1" 
+                                               FontAttributes="Bold,Italic" TextDecorations="Underline"
+                                               FontSize="15"
+                                               >
+                                            <Label.Text>
+                                                <MultiBinding StringFormat="{}Du :{0:d} au {1:d}" >
+                                                    <Binding Path="DateDebut" />
+                                                    <Binding Path="DateFin" />
+                                                </MultiBinding>
+                                            </Label.Text>
+                                        </Label>
+
+                                        <Label Text="{Binding LeProduit.Nom}" Padding="0,20,0,0" Grid.Column="1" 
+                                           TextColor="Black" FontAttributes="Bold" 
+                                           HorizontalOptions="Start" VerticalOptions="Center" />
+
+
+                                    </Grid>
+
+                                </StackLayout>
+
+                            </Frame>
+
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

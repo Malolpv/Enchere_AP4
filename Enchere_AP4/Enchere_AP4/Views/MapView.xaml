@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="Enchere_AP4.Views.MapView"
+             Title="Localiser"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <maps:Map x:Name="mapTest" MinimumHeightRequest="200" MinimumWidthRequest="200" HasZoomEnabled="True" HasScrollEnabled="True" 
+                          HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                          ItemsSource="{Binding Pins}" IsShowingUser="True" >
+
+                <maps:Map.ItemTemplate>
+                    <DataTemplate >
+
+                        <maps:Pin Position="{Binding Position}" Type="Place"
+                                      Label="{Binding Label}" Address="{Binding Address}"
+                                      MarkerClicked="Pin_MarkerClicked"
+                                      
+                                      />
+
+                    </DataTemplate>
+                </maps:Map.ItemTemplate>
+            </maps:Map>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

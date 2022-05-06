@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Enchere_AP4.Views.EncherirInverse"
+             
+             Title="Enchère Inverse"
+             
+             >
+  <ContentPage.Content>
+      <StackLayout>
+            <Button x:Name="btn_Help" Margin="0,5,10,0"
+                    Text="?" WidthRequest="30" HeightRequest="30" BackgroundColor="White" Padding="0,0,0,1"
+                    BorderColor="{StaticResource Primary}" BorderWidth="2" TextColor="{StaticResource Primary}" HorizontalOptions="Center" CornerRadius="15" 
+                    Clicked="btn_Help_Clicked"
+                    />
+            <StackLayout Padding="10">
+
+                <Frame>
+                    <StackLayout>
+
+                        <Label x:Name="lbl_Time" Text="Durée de l'enchère 5 min" TextColor="Black" 
+                               FontAttributes="Bold"
+                               
+                               />
+
+                        <Frame Padding="0,0,0,0" CornerRadius="20" >
+
+                            <ProgressBar x:Name="progressBar"  ProgressColor="{StaticResource Primary}" HeightRequest="20" ScaleY="5" 
+                                     HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                     BackgroundColor="LightGray"
+                                     
+                            />
+
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+
+
+                <Label Text="{Binding PrixMaximum,StringFormat='Dernière enchère : {0}€'}" TextColor="Black" HorizontalOptions="Center" FontAttributes="Bold"
+                       FontSize="Large"
+                       />
+
+
+                <Frame x:Name="frameEntry" BorderColor="LightGray" HasShadow="True" Padding="10,2,0,5"  CornerRadius="15"  IsVisible="{Binding EntryVisible}">
+
+                    <Entry x:Name="entryMontant" Placeholder="Montant de votre enchère" PlaceholderColor="LightGray" Keyboard="Telephone" TextColor="Black"   
+                            Focused="entryMontant_Focused" Unfocused="entryMontant_Unfocused" 
+                            
+                            />
+
+                </Frame>
+
+                <Frame x:Name="frame_Win" BorderColor="DarkGreen" BackgroundColor="ForestGreen" HasShadow="True" Padding="10,2,0,5"  CornerRadius="15"  IsVisible="{Binding WinVisible}" >
+
+                    <Label Text="Vous êtes actuellement le plus haut enchérisseur" />
+
+                </Frame>
+
+            </StackLayout>
+
+            <Button x:Name="btn_Encherir" Text="Enchérir" CornerRadius="15" BackgroundColor="{StaticResource Key=Primary}" 
+                    Command="{Binding EncherirCommand}" CommandParameter="{Binding Source={x:Reference entryMontant}, Path=Text}"
+                    IsVisible="{Binding EntryVisible}"
+                    Clicked="btn_Encherir_Clicked"
+                    />
+
+        </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

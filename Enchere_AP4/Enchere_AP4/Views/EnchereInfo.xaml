@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Enchere_AP4.Views.EnchereInfo"
+             Title="Détails"
+             
+             >
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+                    
+                    <Frame Grid.Row="0" Padding="0" CornerRadius="15" Margin="0" HeightRequest="500">
+
+                        <Image Source="{Binding LaEnchere.LeProduit.Photo}" 
+                           Aspect="AspectFill"
+                           />
+
+                    </Frame>
+                    
+                    <Label Grid.Row="1"
+                   Text="{Binding LaEnchere.LeProduit.Nom}" TextColor="Black" 
+                   HorizontalOptions="Center"  HorizontalTextAlignment="Center"
+                   FontAttributes="Bold" FontSize="Large"
+                   />
+                    
+                    
+                    <Frame Grid.Row="2" Padding="5"  HasShadow="True" 
+                       HorizontalOptions="Center" VerticalOptions="Center"
+                       
+                       >
+                        
+                        <Label
+                       Text="{Binding LaEnchere.PrixReserve,StringFormat='Prix de réserve : {0}€'}"
+                       TextColor="Black"
+                       FontSize="Medium" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       />
+                    </Frame>
+
+                    
+                    <Button Grid.Row="3"
+                        Text="Participer"
+                        BackgroundColor="DarkRed"
+                        TextColor="White"
+                        CornerRadius="15"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Start"
+                        HeightRequest="40"
+                        Command="{Binding GoToEncherirCommand}"
+                    />
+
+                </Grid>
+                <Button Text="localiser" HeightRequest="50" BackgroundColor="ForestGreen" CornerRadius="20" Command="{Binding GoToMapViewCommand}"/>
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>
