@@ -56,8 +56,12 @@ namespace Enchere_AP4.ViewModels
 
 
 
-
-        private ObservableCollection<Pin> LoadPinsMagasins(ObservableCollection<Magasin> param)
+        /// <summary>
+        ///  charge les pins de chaques magasins passés en paramètre, renvoie une ObservableCollection<Pin>
+        /// </summary>
+        /// <param name="param">collection de magasin pour lequel les pins doivent êtres chargé </param>
+        /// <returns></returns>
+        public ObservableCollection<Pin> LoadPinsMagasins(ObservableCollection<Magasin> param)
         {
             
             ObservableCollection<Pin> res = new ObservableCollection<Pin>();

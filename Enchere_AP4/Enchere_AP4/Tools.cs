@@ -19,7 +19,7 @@ namespace Enchere_AP4
     public static class Tools
     {
         //modifier seulement l'adresse avec une des deux dans la region ci-dessous
-        private static string BaseApiAddress => "http://172.17.0.61:8000/";
+        private static string BaseApiAddress => "http://80.13.113.244:2081/";
 
 
         #region NE PAS TOUCHER SEULEMENT CHANGER L'ADRESSE NON COMMENTEE CI-DESSUS

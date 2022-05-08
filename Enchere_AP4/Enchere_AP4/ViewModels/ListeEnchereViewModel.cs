@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Enchere_AP4.Views;
 
 namespace Enchere_AP4.ViewModels
 {
@@ -129,12 +128,12 @@ namespace Enchere_AP4.ViewModels
                 LesEncheres = res;
         }
 
-        private ObservableCollection<Enchere> GetEnchereEnCours()
+        public ObservableCollection<Enchere> GetEnchereEnCours()
         {
             ObservableCollection<Enchere> res = new ObservableCollection<Enchere>();
             foreach (Enchere e in Enchere.CollEnchere)
             {
-                if (e.DateFin > DateTime.Now)
+                if (e.DateFin > DateTime.Now && e.DateDebut <= DateTime.Now)
                     res.Add(e);
             }
             return res;
